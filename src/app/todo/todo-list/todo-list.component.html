@@ -1,0 +1,3 @@
+<div *ngFor="let todo of todos; let i = index">
+  <app-todo-item [todo]="todo" (delete)="onDeleteClick(i)"></app-todo-item>
+</div>
