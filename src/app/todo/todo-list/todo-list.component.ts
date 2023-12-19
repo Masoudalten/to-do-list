@@ -3,6 +3,7 @@ import { TodoComponent } from '../todo.component';
 import { NgFor } from '@angular/common';
 import { AddTodoComponent } from '../add-todo/add-todo.component';
 import { TodoItemComponent } from "../todo-item/todo-item.component";
+import { Todo } from '../interfaces/todo.interface';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,10 +13,10 @@ import { TodoItemComponent } from "../todo-item/todo-item.component";
   imports: [TodoComponent, NgFor, AddTodoComponent, TodoItemComponent]
 })
 export class TodoListComponent {
-  @Input() todos: string[] = [];
+  @Input() todos: Todo[] = [];
   @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 
-  onDeleteClick(index: number) {
+  onDeleteClick(index: number): void {
     this.delete.emit(index);
   }
 }

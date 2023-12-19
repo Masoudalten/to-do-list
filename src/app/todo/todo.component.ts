@@ -3,23 +3,28 @@ import { FormsModule } from '@angular/forms';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { AddTodoComponent } from "./add-todo/add-todo.component";
 import { NgFor } from '@angular/common';
+import { TodoService } from './services/todo.service';
+import { Todo } from './interfaces/todo.interface';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css',
-  imports: [FormsModule, TodoListComponent, AddTodoComponent,NgFor]
+  imports: [FormsModule, TodoListComponent, AddTodoComponent, NgFor],
+
 })
 export class TodoComponent {
-  todos: string[] = [];
+  todos: Todo[] = this.todoService.getAll();
 
-  onAdd(newTodo: string) {
-    this.todos.push(newTodo);
+  constructor(private todoService: TodoService) { }
+
+  onAdd(todoLabel: string): void {
+    const newTodo = this.todoService.creatOne(todoLabel);
   }
 
-  onDelete(index: number) {
-    this.todos.splice(index, 1);
+  onDelete(index: number): void {
+    this.todoService.deletOne(index);
   }
 }
 
