@@ -8,10 +8,8 @@ import { Todo } from './interfaces/todo.interface';
 
 @Component({
   selector: 'app-todo',
-  standalone: true,
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css',
-  imports: [FormsModule, TodoListComponent, AddTodoComponent, NgFor],
 
 })
 export class TodoComponent {

@@ -7,10 +7,8 @@ import { Todo } from '../interfaces/todo.interface';
 
 @Component({
   selector: 'app-todo-list',
-  standalone: true,
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
-  imports: [TodoComponent, NgFor, AddTodoComponent, TodoItemComponent]
 })
 export class TodoListComponent {
   @Input() todos: Todo[] = [];

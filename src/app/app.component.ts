@@ -7,10 +7,8 @@ import { TodoListComponent } from "./todo/todo-list/todo-list.component";
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [HeaderComponent, TodoComponent, TodoListComponent]
 })
 export class AppComponent {
   title = 'to-do-list';
