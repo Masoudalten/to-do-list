@@ -1,10 +1,4 @@
-<table class="table table-striped">
-    <tbody>
-        <tr>
-            <td>{{ todo }}</td>
-            <td class="d-flex flex-row justify-content-end ml-auto">
-                <button class="btn btn-danger" (click)="delete.emit()">Delete</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<td>{{ todo }}</td>
+<td>
+    <button class="btn btn-danger" (click)="delete.emit()">Delete</button>
+</td>
