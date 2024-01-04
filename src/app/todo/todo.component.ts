@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { AddTodoComponent } from "./add-todo/add-todo.component";
-import { NgFor } from '@angular/common';
+import { Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { TodoService } from './services/todo.service';
 import { Todo } from './interfaces/todo.interface';
 
@@ -12,17 +8,57 @@ import { Todo } from './interfaces/todo.interface';
   styleUrl: './todo.component.css',
 
 })
-export class TodoComponent {
-  todos: Todo[] = this.todoService.getAll();
+export class TodoComponent implements OnInit {
+  todos: Todo[] = [];
+  newTodo: string = '';
 
   constructor(private todoService: TodoService) { }
 
-  onAdd(todoLabel: string): void {
-    const newTodo = this.todoService.creatOne(todoLabel);
+
+  ngOnInit(): void {
+    this.todoService.getAll().subscribe((data) => {
+      this.todos = data;
+      //console.log(this.todos)
+    },
+      (error) => {
+        console.log(error)
+      })
+
   }
 
-  onDelete(index: number): void {
-    this.todoService.deletOne(index);
+
+  loadTodoList(): void {
+    this.todoService.getAll().subscribe(
+      (data) => {
+        this.todos = data;
+        //console.log(this.todos);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
+
+  onAdd(newTodo: string): void {
+    this.todoService.creatOne({ label: newTodo }).subscribe((data) => {
+      this.loadTodoList();
+    },
+      (error) => {
+        console.error('Error adding todo item:', error)
+      }
+    )
+  }
+
+
+  onDelete(index: number): void {
+    this.todoService.deletOne(index).subscribe(() => {
+      this.loadTodoList();
+    },
+      (error) => {
+        console.error(error);
+      });
+  }
+
+
 }
 

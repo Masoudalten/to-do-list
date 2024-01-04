@@ -11,9 +11,6 @@ export class AddTodoComponent {
   newTodo: string = '';
   @Output() add: EventEmitter<string> = new EventEmitter<string>();
 
-  // onInputChange(event: Event): void {
-  //   this.newTodo = (event.target as HTMLInputElement).value;
-  // }
 
   onAddClick(): void {
     if (this.newTodo.trim() !== '') {
