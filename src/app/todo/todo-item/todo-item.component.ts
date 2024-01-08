@@ -7,5 +7,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TodoItemComponent {
   @Input() todo: string = '';
+  @Input() todoId?: number ;
   @Output() delete: EventEmitter<void> = new EventEmitter<void>();
 }

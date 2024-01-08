@@ -1,4 +1,4 @@
-<td>{{ todo }}</td>
+<a [routerLink]="'/todo/'+ todoId"><td>{{ todo }}</td></a>
 <td>
     <button class="btn btn-danger" (click)="delete.emit()">Delete</button>
 </td>
