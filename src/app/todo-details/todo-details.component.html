@@ -1,5 +1,4 @@
-<div *ngIf="todoSelected">
-    <h1>Task ID: {{todoSelected.id }}</h1>
-    <h2>Task: {{todoSelected.label}}</h2>
+<div *ngIf="todo$ | async as todo">
+    <h1>Task ID: {{todo.id}}</h1>
+    <h2>Task: {{todo.label}}</h2>
 </div>
- 
