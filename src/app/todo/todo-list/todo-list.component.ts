@@ -1,8 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TodoComponent } from '../todo.component';
-import { NgFor } from '@angular/common';
-import { AddTodoComponent } from '../add-todo/add-todo.component';
-import { TodoItemComponent } from "../todo-item/todo-item.component";
+
 import { Todo } from '../interfaces/todo.interface';
 
 @Component({

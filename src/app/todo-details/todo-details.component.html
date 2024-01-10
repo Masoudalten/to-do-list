@@ -1,4 +1,6 @@
-<div *ngIf="todo$ | async as todo">
+@if (todo$ | async; as todo) {
+<div>
     <h1>Task ID: {{todo.id}}</h1>
     <h2>Task: {{todo.label}}</h2>
 </div>
+}

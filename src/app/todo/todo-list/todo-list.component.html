@@ -1,8 +1,10 @@
 <table class="table table-striped">
   <tbody>
-    <tr *ngFor="let todo of todos; let i = index">
+    @for (todo of todos; track todo; let i = $index) {
+<tr>
         <app-todo-item [todo]="todo.label" [todoId]="todo.id" (delete)="onDeleteClick(todo.id)"
           class="d-flex w-auto justify-content-between"></app-todo-item>
     </tr>
+}
   </tbody>
 </table>
